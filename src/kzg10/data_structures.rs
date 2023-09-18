@@ -282,7 +282,7 @@ where
 
 /// `PreparedVerifierKey` is the fully prepared version for checking evaluation proofs for a given commitment.
 /// We omit gamma here for simplicity.
-#[derive(Derivative)]
+#[derive(Derivative, CanonicalSerialize, CanonicalDeserialize)]
 #[derivative(Default(bound = ""), Clone(bound = ""), Debug(bound = ""))]
 pub struct PreparedVerifierKey<E: Pairing> {
     /// The generator of G1, prepared for power series.
@@ -359,7 +359,7 @@ impl<'a, E: Pairing> AddAssign<(E::ScalarField, &'a Commitment<E>)> for Commitme
 }
 
 /// `PreparedCommitment` commits to a polynomial and prepares for mul_bits.
-#[derive(Derivative)]
+#[derive(Derivative, CanonicalSerialize, CanonicalDeserialize)]
 #[derivative(
     Default(bound = ""),
     Hash(bound = ""),

@@ -48,7 +48,9 @@ pub trait PCVerifierKey:
 
 /// Defines the minimal interface of prepared verifier keys for any polynomial
 /// commitment scheme.
-pub trait PCPreparedVerifierKey<Unprepared: PCVerifierKey> {
+pub trait PCPreparedVerifierKey<Unprepared: PCVerifierKey>:
+    CanonicalSerialize + CanonicalDeserialize
+{
     /// prepare
     fn prepare(vk: &Unprepared) -> Self;
 }
@@ -65,7 +67,9 @@ pub trait PCCommitment: Clone + CanonicalSerialize + CanonicalDeserialize {
 
 /// Defines the minimal interface of prepared commitments for any polynomial
 /// commitment scheme.
-pub trait PCPreparedCommitment<UNPREPARED: PCCommitment>: Clone {
+pub trait PCPreparedCommitment<UNPREPARED: PCCommitment>:
+    Clone + CanonicalSerialize + CanonicalDeserialize
+{
     /// prepare
     fn prepare(comm: &UNPREPARED) -> Self;
 }

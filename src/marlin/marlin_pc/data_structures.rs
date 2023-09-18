@@ -155,7 +155,7 @@ where
 }
 
 /// `PreparedVerifierKey` is used to check evaluation proofs for a given commitment.
-#[derive(Derivative)]
+#[derive(Derivative, CanonicalSerialize, CanonicalDeserialize)]
 #[derivative(Clone(bound = ""), Debug(bound = ""))]
 pub struct PreparedVerifierKey<E: Pairing> {
     /// The verification key for the underlying KZG10 scheme.
@@ -264,7 +264,7 @@ impl<E: Pairing> PCCommitment for Commitment<E> {
 }
 
 /// Prepared commitment to a polynomial that optionally enforces a degree bound.
-#[derive(Derivative)]
+#[derive(Derivative, CanonicalSerialize, CanonicalDeserialize)]
 #[derivative(
     Hash(bound = ""),
     Clone(bound = ""),
