@@ -11,6 +11,10 @@ use ark_poly::DenseUVPolynomial;
 use ark_std::rand::RngCore;
 use ark_std::{marker::PhantomData, ops::Div, vec};
 
+#[cfg(feature = "r1cs")]
+mod constraints;
+#[cfg(feature = "r1cs")]
+pub use constraints::*;
 mod data_structures;
 use crate::challenge::ChallengeGenerator;
 use ark_crypto_primitives::sponge::CryptographicSponge;
